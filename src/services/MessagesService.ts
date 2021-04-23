@@ -23,6 +23,17 @@ class MessagesServices {
 
     return message;
   }
+
+  async listByUser(user_id: string): Promise<Message[]> {
+    const messagesRepository = getCustomRepository(MessagesRepository);
+
+    const list = await messagesRepository.find({
+      where: { user_id },
+      relations: ["user"],
+    });
+
+    return list;
+  }
 }
 
 export { MessagesServices };
