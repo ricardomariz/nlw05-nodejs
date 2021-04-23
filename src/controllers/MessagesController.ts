@@ -17,7 +17,7 @@ class MessagesController {
     return response.status(201).json(message);
   }
 
-  async showByUser(request: Request, response: Response) {
+  async showByUser(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const messagesServices = new MessagesServices();
 
